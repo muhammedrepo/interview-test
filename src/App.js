@@ -106,13 +106,13 @@ const App = () => {
   return (
     <section className="pt-20">
       <div className="container mx-auto p-4">
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
           {users.map((user) => {
             const { id, Name, avatar, occupation } = user;
 
             return (
               <div
-                className="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                className="w-full max-w-md bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
                 key={id}
               >
                 <div className="flex flex-col p-4 pb-10">
@@ -140,7 +140,7 @@ const App = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="flex flex-1 items-center justify-between">
+                  <div className="flex items-center justify-between">
                     <div className="graph text-white">
                       <div>
                         <HighchartsReact
@@ -149,12 +149,16 @@ const App = () => {
                             yAxis: {
                               gridLineWidth: 0,
                             },
+                            credits: {
+                              text: "",
+                            },
 
                             title: {
                               text: null,
                             },
+
                             chart: {
-                              width: 200,
+                              width: 300,
                               height: 200,
                               backgroundColor: "transparent",
                             },
@@ -172,15 +176,22 @@ const App = () => {
                     </div>
 
                     <div className="text-white">
-                      <div className="flex flex-col">
-                        {user.impressionSum}
-                        <span>impressions</span>
+                      <div className="flex flex-col mb-4">
+                        <span className="font-bold text-blue-200">
+                          {user.impressionSum}
+                        </span>
+
+                        <span className="text-gray-400">impressions</span>
                       </div>
                       <div className="flex flex-col">
-                        {user.conversionSum}
-                        <span>conversions</span>
+                        <span className="font-bold text-blue-200">
+                          {user.conversionSum}
+                        </span>
+                        <span className="text-gray-400 ">conversions</span>
                       </div>
-                      <div>${Math.ceil(user.revenueSum)}</div>
+                      <div className="font-bold text-xl">
+                        ${Math.ceil(user.revenueSum)}
+                      </div>
                     </div>
                   </div>
                 </div>
