@@ -104,86 +104,92 @@ const App = () => {
   };
 
   return (
-    <div className="container p-4 mx-auto grid grid-cols-3 gap-4">
-      {users.map((user) => {
-        const { id, Name, avatar, occupation } = user;
+    <section className="pt-20">
+      <div className="container mx-auto p-4">
+        <div className="grid grid-cols-3 gap-2">
+          {users.map((user) => {
+            const { id, Name, avatar, occupation } = user;
 
-        return (
-          <div
-            className="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-            key={id}
-          >
-            <div className="flex flex-col p-4 pb-10">
-              <div className="flex items-center gap-3">
-                {user.firstLetter ? (
-                  <div className="grid place-items-center w-24 h-24 rounded-full shadow-lg">
-                    <h2 className="text-4xl text-white ">{user.firstLetter}</h2>
+            return (
+              <div
+                className="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                key={id}
+              >
+                <div className="flex flex-col p-4 pb-10">
+                  <div className="flex items-center gap-3">
+                    {user.firstLetter ? (
+                      <div className="grid place-items-center w-24 h-24 rounded-full shadow-lg">
+                        <h2 className="text-4xl text-white ">
+                          {user.firstLetter}
+                        </h2>
+                      </div>
+                    ) : (
+                      <img
+                        className="mb-3 w-24 h-24 rounded-full shadow-lg"
+                        src={avatar}
+                        alt="avatar"
+                      />
+                    )}
+
+                    <div className="flex flex-col">
+                      <h5 className="mb-1 text-3xl font-medium text-gray-900 dark:text-white">
+                        {Name}
+                      </h5>
+                      <span className="text-lg text-gray-500 dark:text-gray-400">
+                        {occupation}
+                      </span>
+                    </div>
                   </div>
-                ) : (
-                  <img
-                    className="mb-3 w-24 h-24 rounded-full shadow-lg"
-                    src={avatar}
-                    alt="avatar"
-                  />
-                )}
+                  <div className="flex flex-1 items-center justify-between">
+                    <div className="graph text-white">
+                      <div>
+                        <HighchartsReact
+                          highcharts={Highcharts}
+                          options={{
+                            yAxis: {
+                              gridLineWidth: 0,
+                            },
 
-                <div className="flex flex-col">
-                  <h5 className="mb-1 text-3xl font-medium text-gray-900 dark:text-white">
-                    {Name}
-                  </h5>
-                  <span className="text-lg text-gray-500 dark:text-gray-400">
-                    {occupation}
-                  </span>
+                            title: {
+                              text: null,
+                            },
+                            chart: {
+                              width: 200,
+                              height: 200,
+                              backgroundColor: "transparent",
+                            },
+                            series: [
+                              {
+                                data: user.chartData,
+                              },
+                            ],
+                          }}
+                        />
+                      </div>
+                      <div>
+                        Conversions <span>4/12 - 4/30</span>
+                      </div>
+                    </div>
+
+                    <div className="text-white">
+                      <div className="flex flex-col">
+                        {user.impressionSum}
+                        <span>impressions</span>
+                      </div>
+                      <div className="flex flex-col">
+                        {user.conversionSum}
+                        <span>conversions</span>
+                      </div>
+                      <div>${Math.ceil(user.revenueSum)}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-1 items-center justify-between">
-                <div className="graph text-white">
-                  <div>
-                    <HighchartsReact
-                      highcharts={Highcharts}
-                      options={{
-                        yAxis: {
-                          gridLineWidth: 0,
-                        },
-
-                        title: {
-                          text: null,
-                        },
-                        chart: {
-                          width: 200,
-                          height: 200,
-                          backgroundColor: "transparent",
-                        },
-                        series: [
-                          {
-                            data: user.chartData,
-                          },
-                        ],
-                      }}
-                    />
-                  </div>
-                  <div>
-                    Conversions <span>4/12 - 4/30</span>
-                  </div>
-                </div>
-
-                <div className="text-white">
-                  <div className="flex flex-col">
-                    {user.impressionSum}
-                    <span>impressions</span>
-                  </div>
-                  <div className="flex flex-col">
-                    {user.conversionSum}
-                    <span>conversions</span>
-                  </div>
-                  <div>${Math.ceil(user.revenueSum)}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 };
 
