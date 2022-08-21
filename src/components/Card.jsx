@@ -3,7 +3,7 @@ import Chart from "./Chart";
 const Card = ({ id, avatar, Name, occupation, user }) => {
   return (
     <div
-      className="w-full max-w-md bg-white rounded-lg border-4 border-black shadow-md"
+      className="w-full max-w-md bg-white rounded-2xl border-4 border-black shadow-md"
       key={id}
     >
       <div className="flex flex-col p-4">
@@ -21,7 +21,7 @@ const Card = ({ id, avatar, Name, occupation, user }) => {
           )}
 
           <div className="flex flex-col items-center">
-            <h5 className="text-2xl font-bold text-gray-700">{Name}</h5>
+            <h5 className="text-2xl font-bold text-[#2C3F50]">{Name}</h5>
             <span className="text-base text-gray-400 font-bold">
               {occupation}
             </span>

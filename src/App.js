@@ -103,9 +103,9 @@ const App = () => {
   };
 
   return (
-    <section className="pt-20 bg-gray-400">
+    <section className="pt-20 bg-[#7E8C8D]">
       <div className="container mx-auto p-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           {users.map((user) => {
             const { id, Name, avatar, occupation } = user;
 
