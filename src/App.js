@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import logs from "./logs.json";
 
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+import Card from "./components/Card";
 
 const config = {
   headers: {
@@ -12,7 +11,7 @@ const config = {
 };
 
 const url =
-  "https://api.airtable.com/v0/appBTaX8XIvvr6zEC/Users?maxRecords=12&view=Grid%20view";
+  "https://api.airtable.com/v0/appBTaX8XIvvr6zEC/Users?maxRecords=Grid%20view";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -104,98 +103,20 @@ const App = () => {
   };
 
   return (
-    <section className="pt-20">
+    <section className="pt-20 bg-gray-400">
       <div className="container mx-auto p-4">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {users.map((user) => {
             const { id, Name, avatar, occupation } = user;
 
             return (
-              <div
-                className="w-full max-w-md bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
-                key={id}
-              >
-                <div className="flex flex-col p-4 pb-10">
-                  <div className="flex items-center gap-3">
-                    {user.firstLetter ? (
-                      <div className="grid place-items-center w-24 h-24 rounded-full shadow-lg">
-                        <h2 className="text-4xl text-white ">
-                          {user.firstLetter}
-                        </h2>
-                      </div>
-                    ) : (
-                      <img
-                        className="mb-3 w-24 h-24 rounded-full shadow-lg"
-                        src={avatar}
-                        alt="avatar"
-                      />
-                    )}
-
-                    <div className="flex flex-col">
-                      <h5 className="mb-1 text-3xl font-medium text-gray-900 dark:text-white">
-                        {Name}
-                      </h5>
-                      <span className="text-lg text-gray-500 dark:text-gray-400">
-                        {occupation}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="graph text-white">
-                      <div>
-                        <HighchartsReact
-                          highcharts={Highcharts}
-                          options={{
-                            yAxis: {
-                              gridLineWidth: 0,
-                            },
-                            credits: {
-                              text: "",
-                            },
-
-                            title: {
-                              text: null,
-                            },
-
-                            chart: {
-                              width: 300,
-                              height: 200,
-                              backgroundColor: "transparent",
-                            },
-                            series: [
-                              {
-                                data: user.chartData,
-                              },
-                            ],
-                          }}
-                        />
-                      </div>
-                      <div>
-                        Conversions <span>4/12 - 4/30</span>
-                      </div>
-                    </div>
-
-                    <div className="text-white">
-                      <div className="flex flex-col mb-4">
-                        <span className="font-bold text-blue-200">
-                          {user.impressionSum}
-                        </span>
-
-                        <span className="text-gray-400">impressions</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="font-bold text-blue-200">
-                          {user.conversionSum}
-                        </span>
-                        <span className="text-gray-400 ">conversions</span>
-                      </div>
-                      <div className="font-bold text-xl">
-                        ${Math.ceil(user.revenueSum)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Card
+                id={id}
+                Name={Name}
+                avatar={avatar}
+                occupation={occupation}
+                user={user}
+              />
             );
           })}
         </div>
