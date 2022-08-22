@@ -1,7 +1,7 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const Chart = ({ user }) => {
+const Chart = ({ data }) => {
   return (
     <div className="chart">
       <div>
@@ -30,9 +30,12 @@ const Chart = ({ user }) => {
             legend: {
               enabled: false,
             },
+            accessibility: {
+              enabled: false,
+            },
             series: [
               {
-                data: user.chartData,
+                data: data.chartData,
                 color: "#5F5F5F",
               },
             ],

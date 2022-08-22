@@ -3,6 +3,7 @@ import axios from "axios";
 import logs from "./logs.json";
 
 import Card from "./components/Card";
+import SearchBar from "./components/SearchBar";
 
 const config = {
   headers: {
@@ -15,6 +16,15 @@ const url =
 
 const App = () => {
   const [users, setUsers] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const keys = ["Name", "occupation"];
+
+  const search = (data) => {
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(query))
+    );
+  };
 
   useEffect(() => {
     axios
@@ -43,7 +53,6 @@ const App = () => {
           }
         });
         setUsers(fields);
-        console.log(fields);
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +75,7 @@ const App = () => {
 
   const getRevenue = (userId) => {
     const filteredLog = logs.filter((log) => log.user_id === userId);
-    console.log(filteredLog);
+
     let sum = 0;
     filteredLog.forEach((log) => {
       const revenue = log.revenue;
@@ -103,22 +112,17 @@ const App = () => {
   };
 
   return (
-    <section className="pt-20 bg-[#7E8C8D]">
-      <div className="container mx-auto p-4">
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {users.map((user) => {
-            const { id, Name, avatar, occupation } = user;
+    <section className="bg-black-gradient w-full overflow-hidden px-6 py-4">
+      <div className="flex flex-col justify-center items-center ">
+        <div className="xl:max-w-[1280px] w-full">
+          <h1 className="font-medium leading-tight text-4xl mt-0 py-4 text-center text-gradient">
+            User Accounts Activity
+          </h1>
+          <SearchBar setQuery={setQuery} />
 
-            return (
-              <Card
-                id={id}
-                Name={Name}
-                avatar={avatar}
-                occupation={occupation}
-                user={user}
-              />
-            );
-          })}
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <Card data={search(users).splice(0, 9)} />
+          </div>
         </div>
       </div>
     </section>
