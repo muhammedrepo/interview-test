@@ -30,16 +30,10 @@ const SearchBar = ({ setQuery }) => {
         <input
           type="search"
           className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-neutral-500 focus:border-neutral-500"
-          placeholder="Search Names, Occupations..."
+          placeholder="Search Name, Occupation..."
           required=""
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button
-          type="submit"
-          className="text-white absolute right-2.5 bottom-2.5 bg-neutral-700 hover:bg-neutral-800 focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-lg text-sm px-4 py-2"
-        >
-          Search
-        </button>
       </div>
     </form>
   );
