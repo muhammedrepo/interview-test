@@ -6,7 +6,7 @@ const Card = ({ data }) => {
       {data.map((item) => (
         <div
           key={item.Id}
-          className="w-full max-w-md bg-white rounded-2xl border-4 border-black shadow-md"
+          className="w-full bg-white rounded-2xl border-4 border-black shadow-md"
         >
           <div className="flex flex-col p-4">
             <div className="flex items-center gap-4">

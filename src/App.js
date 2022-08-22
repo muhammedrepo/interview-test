@@ -120,7 +120,7 @@ const App = () => {
           </h1>
           <SearchBar setQuery={setQuery} />
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 md:gap-8">
             <Card data={search(users).splice(0, 9)} />
           </div>
         </div>
