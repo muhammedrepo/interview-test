@@ -1,11 +1,11 @@
-import Chart from "./Chart";
+import Chart from './Chart';
 
 const Card = ({ data }) => {
   return (
     <>
       {data.map((item) => (
         <div
-          key={item.Id}
+          key={item.id}
           className="w-full bg-white rounded-2xl border-4 border-black shadow-md"
         >
           <div className="flex flex-col p-4">

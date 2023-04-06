@@ -1,3 +1,23 @@
+Case Study: Creating a User Accounts Activity Chart with React and Airtable API
+
+Overview
+My client, a digital marketing company, wanted a way to visualize their user's activity on their platform. They needed a system that would allow them to monitor the user's revenue, conversion rate, and impression rate using charts. The client had a large user base, so we had to create an efficient system to handle the data.
+
+Challenges
+I had to deal with the high volume of data, which made it difficult to manage. Secondly, I had to find a way to create charts to display the data visually. Finally, I needed to make sure that the system was user-friendly and easy to use.
+
+Solution
+To address these challenges, I decided to use React as the framework and Airtable API as the database. React is known for its efficiency and reusability, making it a suitable framework for handling large volumes of data. Airtable API allowed me to store and retrieve data efficiently and effectively.
+
+I used the useEffect() hook to fetch the data from Airtable API, and axios to make HTTP requests. I used the map() function to loop through the data and create an array of objects containing the user's data. I then passed the data to the Card component to display it on the dashboard.
+
+I also created several helper functions to calculate the user's revenue, conversion rate, impression rate, and chart data. I used the reduce() method to calculate the user's revenue, and the filter() method to count the user's conversion rate and impression rate.
+
+Finally, I used chart.js to create charts to display the user's data visually. I passed the chart data to the Chart component to display it on the dashboard.
+
+Conclusion
+In conclusion, I was able to develop a user accounts activity dashboard that met my client's requirements. I used React as the framework and Airtable API as the database, which allowed me to efficiently and effectively manage the high volume of data. I also created a visually appealing and user-friendly system that helped my client to make informed decisions and improve their user's experience on their platform.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,58 +33,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
